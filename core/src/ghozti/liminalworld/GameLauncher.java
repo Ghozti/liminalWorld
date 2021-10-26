@@ -19,12 +19,14 @@ public class GameLauncher implements Screen {
 
     //background
     Texture texture;
+    int bgOffset;
 
     public GameLauncher(){
         camera = new OrthographicCamera();
         viewport = new StretchViewport(1920,1080,camera);
         batch = new SpriteBatch();
         texture = new Texture("Untitled.png");
+        bgOffset = 0;
     }
 
     @Override
@@ -37,7 +39,10 @@ public class GameLauncher implements Screen {
         ScreenUtils.clear(0, 0, 0, 1);
         batch.begin();
         //render here
-        batch.draw(texture,0,0,1920,1080);
+        bgOffset++;
+        if (bgOffset == 980) bgOffset = 0;
+
+        batch.draw(texture,0,-bgOffset,1920,1080);
         batch.end();
     }
 
