@@ -40,9 +40,10 @@ public class GameLauncher implements Screen {
         batch.begin();
         //render here
         bgOffset++;
-        if (bgOffset == 980) bgOffset = 0;
+        if (bgOffset % 1080 == 0) bgOffset = 0;
 
         batch.draw(texture,0,-bgOffset,1920,1080);
+        batch.draw(texture,0,-bgOffset+1080,1920,1080);
         batch.end();
     }
 
