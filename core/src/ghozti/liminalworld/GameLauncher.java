@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
+import ghozti.liminalworld.entities.player.Player;
 import org.w3c.dom.Text;
 
 public class GameLauncher implements Screen {
@@ -20,6 +21,7 @@ public class GameLauncher implements Screen {
     //background
     Texture texture;
     int bgOffset;
+    Player player = new Player();
 
     public GameLauncher(){
         camera = new OrthographicCamera();
@@ -44,6 +46,8 @@ public class GameLauncher implements Screen {
 
         batch.draw(texture,0,-bgOffset,1920,1080);
         batch.draw(texture,0,-bgOffset+1080,1920,1080);
+
+        player.drawSprite(batch);
         batch.end();
     }
 
