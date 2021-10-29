@@ -1,6 +1,7 @@
 package ghozti.liminalworld.entities;
 
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Rectangle;
 import org.w3c.dom.Text;
@@ -13,6 +14,11 @@ public class GameSprite {
     float[] position;
     float width, height;
     Sprite sprite;
+
+    /*
+        REQUIRED TO FILL IN v, OTHERWISE IT WILL CREATE A NULL EXCEPTION AND WILL CRASH THE PROGRAM
+        THESE ARE JUST SETTERS AND GETTERS
+     */
 
     public void setTexture(Texture texture){
         this.texture = texture;
@@ -61,4 +67,9 @@ public class GameSprite {
     public Sprite getSprite() {
         return sprite;
     }
+
+    public void draw(Batch batch){
+        sprite.draw(batch);
+    }
+
 }

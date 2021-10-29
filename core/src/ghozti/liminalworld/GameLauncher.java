@@ -47,7 +47,7 @@ public class GameLauncher implements Screen {
         batch.draw(texture,0,-bgOffset,1920,1080);
         batch.draw(texture,0,-bgOffset+1080,1920,1080);
 
-        player.drawSprite(batch);
+        player.draw(batch);
         batch.end();
     }
 
