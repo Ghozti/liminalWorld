@@ -3,10 +3,11 @@ package ghozti.liminalworld.entities;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
 import org.w3c.dom.Text;
 
-public class GameSprite {
+public abstract class GameSprite {
 
     //properties
     Texture texture;
@@ -71,5 +72,11 @@ public class GameSprite {
     public void draw(Batch batch){
         sprite.draw(batch);
     }
+
+    //override me
+    public abstract void update();
+
+    //override me
+    public abstract void draw(SpriteBatch batch);
 
 }
