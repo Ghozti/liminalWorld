@@ -21,11 +21,11 @@ public class Player extends GameSprite {
 
     @Override
     public void update() {
-
+        getSprite().setPosition(getPosition()[0],getPosition()[1]);
     }
 
     @Override
     public void draw(SpriteBatch batch) {
-
+        batch.draw(getTexture(),getPosition()[0],getPosition()[1],getWidth(),getHeight());
     }
 }
