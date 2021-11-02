@@ -1,14 +1,15 @@
 package ghozti.liminalworld;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
-import ghozti.liminalworld.entities.gameentities.Box;
 import ghozti.liminalworld.entities.gameentities.Comet;
 import ghozti.liminalworld.entities.player.Player;
 
@@ -20,7 +21,8 @@ public class GameLauncher implements Screen {
     SpriteBatch batch;
 
     //background
-    Texture texture;
+    TextureAtlas atlas;
+    TextureRegion region;
     int bgOffset;
     Player player = new Player();
     Comet comet = new Comet();
@@ -29,8 +31,11 @@ public class GameLauncher implements Screen {
         camera = new OrthographicCamera();
         viewport = new StretchViewport(1920,1080,camera);
         batch = new SpriteBatch();
-        texture = new Texture("Untitled.png");
         bgOffset = 0;
+
+        //atlas and regions
+        atlas = new TextureAtlas(Gdx.files.internal("atlas/sprites.atlas"));
+        region = atlas.findRegion("bg");
     }
 
     @Override
@@ -40,6 +45,7 @@ public class GameLauncher implements Screen {
 
     public void update(){
         player.update();
+        comet.update();
     }
 
     @Override
@@ -51,10 +57,15 @@ public class GameLauncher implements Screen {
         bgOffset++;
         if (bgOffset % 1080 == 0) bgOffset = 0;
 
-        batch.draw(texture,0,-bgOffset,1920,1080);
-        batch.draw(texture,0,-bgOffset+1080,1920,1080);
+        //bg
+        batch.draw(region,0,-bgOffset,1920,1080);
+        batch.draw(region,0,-bgOffset+1080,1920,1080);
+
+        //comet
         comet.draw(batch);
+        //player
         player.draw(batch);
+
         batch.end();
     }
 
@@ -81,6 +92,7 @@ public class GameLauncher implements Screen {
 
     @Override
     public void dispose() {
-
+        atlas.dispose();
+        batch.dispose();
     }
 }

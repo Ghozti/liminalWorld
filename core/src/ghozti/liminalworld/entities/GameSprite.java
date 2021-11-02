@@ -1,27 +1,25 @@
 package ghozti.liminalworld.entities;
 
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.Batch;
-import com.badlogic.gdx.graphics.g2d.Sprite;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.g2d.*;
 import com.badlogic.gdx.math.Rectangle;
-import org.w3c.dom.Text;
 
 public abstract class GameSprite {
 
     //properties
-    Texture texture, debugTexture = new Texture("hitboxDebug.png");
     com.badlogic.gdx.math.Rectangle hitbox;
     float[] position;
     float width, height;
     Sprite sprite;
+    public TextureAtlas atlas = new TextureAtlas(Gdx.files.internal("atlas/sprites.atlas"));
+    TextureRegion texture, debugTexture = atlas.findRegion("hitboxDebug");
 
     /*
         REQUIRED TO FILL IN v, OTHERWISE IT WILL CREATE A NULL EXCEPTION AND WILL CRASH THE PROGRAM
         THESE ARE JUST SETTERS AND GETTERS
      */
 
-    public void setTexture(Texture texture){
+    public void setTexture(TextureRegion texture){
         this.texture = texture;
     }
 
@@ -49,7 +47,7 @@ public abstract class GameSprite {
         this.sprite = sprite;
     }
 
-    public Texture getTexture() {
+    public TextureRegion getTexture() {
         return texture;
     }
 
@@ -73,7 +71,7 @@ public abstract class GameSprite {
         return sprite;
     }
 
-    public void draw(Batch batch){
+    public void drawSprite(Batch batch){
         sprite.draw(batch);
     }
 

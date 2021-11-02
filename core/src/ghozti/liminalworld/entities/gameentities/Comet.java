@@ -1,15 +1,18 @@
 package ghozti.liminalworld.entities.gameentities;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Rectangle;
 import ghozti.liminalworld.entities.GameSprite;
 
 public class Comet extends GameSprite {
 
     public Comet(){
-        setTexture(new Texture("testasset.png"));
+        setTexture(atlas.findRegion("comet"));
         setHitbox(new Rectangle());
         setPosition(new float[] {150,500});
         setWidth(250);
@@ -26,7 +29,6 @@ public class Comet extends GameSprite {
 
     @Override
     public void draw(SpriteBatch batch) {
-        batch.draw(getTexture(),getPosition()[0],getPosition()[1],getWidth(),getHeight());
-        drawHitboxes(batch);
+        drawSprite(batch);
     }
 }
