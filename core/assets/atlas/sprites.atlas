@@ -1,0 +1,48 @@
+
+sprites.png
+size: 2048, 1024
+format: RGBA8888
+filter: Nearest, Nearest
+repeat: none
+bg
+  rotate: false
+  xy: 2, 326
+  size: 1152, 648
+  orig: 1152, 648
+  offset: 0, 0
+  index: -1
+box
+  rotate: false
+  xy: 1156, 874
+  size: 100, 100
+  orig: 100, 100
+  offset: 0, 0
+  index: -1
+comet
+  rotate: false
+  xy: 2, 104
+  size: 330, 220
+  orig: 330, 220
+  offset: 0, 0
+  index: -1
+hitboxDebug
+  rotate: false
+  xy: 2, 2
+  size: 100, 100
+  orig: 100, 100
+  offset: 0, 0
+  index: -1
+ship
+  rotate: false
+  xy: 334, 260
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+shipActive
+  rotate: false
+  xy: 1156, 808
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
