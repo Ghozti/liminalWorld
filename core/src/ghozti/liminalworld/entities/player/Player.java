@@ -11,7 +11,7 @@ import java.awt.*;
 public class Player extends GameSprite {
 
     public Player(){
-        setTexture(new Texture("testasset.png"));
+        setTexture(new Texture("ship.png"));
         setHitbox(new Rectangle());
         setPosition(new float[] {50,50});
         setWidth(250);
