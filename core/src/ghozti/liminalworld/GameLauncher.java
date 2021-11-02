@@ -44,6 +44,7 @@ public class GameLauncher implements Screen {
 
     @Override
     public void render(float delta) {
+        update();
         ScreenUtils.clear(0, 0, 0, 1);
         batch.begin();
         //render here

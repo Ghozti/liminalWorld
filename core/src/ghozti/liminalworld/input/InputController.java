@@ -11,6 +11,6 @@ public class InputController {
         }else if(Gdx.input.isKeyPressed(Input.Keys.D)){
             return "d";
         }
-        return null;
+        return "";
     }
 }
