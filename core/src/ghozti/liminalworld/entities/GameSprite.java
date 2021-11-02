@@ -10,7 +10,7 @@ import org.w3c.dom.Text;
 public abstract class GameSprite {
 
     //properties
-    Texture texture;
+    Texture texture, debugTexture = new Texture("hitboxDebug.png");
     com.badlogic.gdx.math.Rectangle hitbox;
     float[] position;
     float width, height;
@@ -31,14 +31,18 @@ public abstract class GameSprite {
 
     public void setPosition(float[] position){
         this.position = position;
+        this.hitbox.x = position[0];
+        this.hitbox.y = position[1];
     }
 
     public void setWidth(float width){
         this.width = width;
+        this.hitbox.width = this.width;
     }
 
     public void setHeight(float height){
         this.height = height;
+        this.hitbox.height = this.height;
     }
 
     public void createSpite(Sprite sprite){
@@ -78,5 +82,9 @@ public abstract class GameSprite {
 
     //override me
     public abstract void draw(SpriteBatch batch);
+
+    public void drawHitboxes(Batch batch){
+        batch.draw(debugTexture,getHitbox().x,getHitbox().y,getHitbox().width,getHitbox().height);
+    }
 
 }

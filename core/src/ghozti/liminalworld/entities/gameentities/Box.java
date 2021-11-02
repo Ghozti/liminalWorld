@@ -25,5 +25,6 @@ public class Box extends GameSprite {
     @Override
     public void draw(SpriteBatch batch) {
         batch.draw(getTexture(),getPosition()[0],getPosition()[1],getWidth(),getHeight());
+        drawHitboxes(batch);
     }
 }
