@@ -11,12 +11,12 @@ public abstract class GameSprite {
     Sprite sprite;
     com.badlogic.gdx.math.Rectangle hitbox;
     float[] position;
-    float width, height, scale;
-    Texture texture;
+    float width, height, scale, unScaledWidth, unscaledHeight;
+    TextureRegion texture;
 
     //const
-    public final TextureAtlas atlas = new TextureAtlas(Gdx.files.internal("atlas/sprites.atlas"));
-    public final Texture debugTexture = atlas.findRegion("hitboxDebug").getTexture();
+    public TextureAtlas atlas = new TextureAtlas(Gdx.files.internal("atlas/sprites.atlas"));
+    public TextureRegion debugTexture = atlas.findRegion("hitboxDebug");
 
     /*
         REQUIRED TO FILL IN v, OTHERWISE IT WILL CREATE A NULL EXCEPTION AND WILL CRASH THE PROGRAM
@@ -34,16 +34,22 @@ public abstract class GameSprite {
     public void setPosition(float[] position){
         this.position = position;
         sprite.setPosition(this.position[0],this.position[1]);
+        hitbox.x = position[0];
+        hitbox.y = position[1];
     }
 
     //actual image height
-    public void setRegeonWidth(float width){
+    public void setRegionWidth(float width){
+        unScaledWidth = width;
         sprite.setRegionWidth((int)width);
+        this.width = width;
     }
 
     //actual image height
-    public void setRegeonHeight(float height){
+    public void setRegionHeight(float height){
+        unscaledHeight = height;
         sprite.setRegionHeight((int)height);
+        this.height = height;
     }
 
     //scale will be multiplied to the width and height
@@ -52,12 +58,22 @@ public abstract class GameSprite {
         this.width = width * scale;
         this.height = height * scale;
         sprite.setScale(this.scale);
+        hitbox.width = width;
+        hitbox.height = height;
+    }
+
+    public void updatePosition(float xChange, float ychange){
+        position[0] += xChange;
+        position[1] += ychange;
+        sprite.setPosition(position[0], position[1]);
+        hitbox.x = position[0];
+        hitbox.y = position[1];
     }
 
     //GETTERS
     public void setTexture(TextureRegion texture){
-        this.texture = texture.getTexture();
-        sprite.setTexture(this.texture);
+        this.texture = texture;
+        sprite.setRegion(texture);
     }
 
     public Sprite getSprite() {
@@ -84,20 +100,20 @@ public abstract class GameSprite {
         return scale;
     }
 
-    public Texture getTexture() {
+    public TextureRegion getTexture() {
         return texture;
     }
 
     //DRAWING STUFF
     public abstract void draw(Batch batch);
 
-    public abstract void update(Batch batch);
+    public abstract void update();
 
     public void drawSprite(Batch batch){
         sprite.draw(batch);
     }
 
     public void drawHitBox(Batch batch){
-        batch.draw(debugTexture,getPosition()[0],getPosition()[1], getWidth(),getHeight());
+        batch.draw(debugTexture,getPosition()[0]-unScaledWidth,getPosition()[1]-unscaledHeight, getWidth(),getHeight());
     }
 }
