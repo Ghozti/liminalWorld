@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Camera;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -24,8 +25,9 @@ public class GameLauncher implements Screen {
     TextureAtlas atlas;
     TextureRegion region;
     int bgOffset;
-    Player player = new Player();
-    Comet comet = new Comet();
+    //Player player = new Player();
+    //Comet comet = new Comet();
+    Sprite sprite;
 
     public GameLauncher(){
         camera = new OrthographicCamera();
@@ -36,6 +38,12 @@ public class GameLauncher implements Screen {
         //atlas and regions
         atlas = new TextureAtlas(Gdx.files.internal("atlas/sprites.atlas"));
         region = atlas.findRegion("bg");
+        sprite = new Sprite(atlas.findRegion("shipActive"));
+        sprite.setPosition(500,500);
+        sprite.setRegionWidth(64);
+        sprite.setRegionHeight(64);
+        sprite.setScale(3f);
+        sprite.setTexture(atlas.findRegion("ship").getTexture());
     }
 
     @Override
@@ -44,8 +52,8 @@ public class GameLauncher implements Screen {
     }
 
     public void update(){
-        player.update();
-        comet.update();
+        //player.update();
+        //comet.update();
     }
 
     @Override
@@ -62,10 +70,10 @@ public class GameLauncher implements Screen {
         batch.draw(region,0,-bgOffset+1080,1920,1080);
 
         //comet
-        comet.draw(batch);
+        //comet.draw(batch);
         //player
-        player.draw(batch);
-
+        //player.draw(batch);
+        sprite.draw(batch);
         batch.end();
     }
 
