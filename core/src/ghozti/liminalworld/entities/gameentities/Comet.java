@@ -30,5 +30,6 @@ public class Comet extends GameSprite {
     @Override
     public void draw(SpriteBatch batch) {
         drawSprite(batch);
+        drawHitboxes(batch);
     }
 }

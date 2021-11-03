@@ -1,14 +1,10 @@
 package ghozti.liminalworld.entities.player;
 
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Rectangle;
 import ghozti.liminalworld.entities.GameSprite;
-import ghozti.liminalworld.input.InputController;
 
 import java.awt.*;
 
@@ -18,8 +14,8 @@ public class Player extends GameSprite {
         setTexture(atlas.findRegion("ship"));
         setHitbox(new Rectangle());
         setPosition(new float[] {50,50});
-        setWidth(64);
-        setHeight(64);
+        setWidth(250);
+        setHeight(250);
         createSpite(new Sprite(getTexture(),(int)getPosition()[0],(int)getPosition()[1],(int)getWidth(),(int)getHeight()));
     }
 
@@ -32,7 +28,7 @@ public class Player extends GameSprite {
 
     @Override
     public void draw(SpriteBatch batch) {
-        drawSprite(batch);
+        getSprite().draw(batch);
         drawHitboxes(batch);
     }
 }
