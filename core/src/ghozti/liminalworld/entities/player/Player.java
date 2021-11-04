@@ -26,12 +26,18 @@ public class Player extends GameSprite {
     @Override
     public void update() {
         if (InputController.getKey().equals("a")){
-            updatePosition(-10,0);
+            updatePosition(-8,0);
             setTexture(atlas.findRegion("shipActive"));
         }else if(InputController.getKey().equals("d")){
-            updatePosition(10,0);
+            updatePosition(8,0);
             setTexture(atlas.findRegion("shipActive"));
-        }else {
+        }else if (InputController.getKey().equals("w")){
+            updatePosition(0,8);
+            setTexture(atlas.findRegion("shipActive"));
+        }else if(InputController.getKey().equals("s")){
+            updatePosition(0,-8);
+            setTexture(atlas.findRegion("shipActive"));
+        } else {
             setTexture(atlas.findRegion("ship"));
         }
     }
