@@ -41,5 +41,18 @@ public class Player extends GameSprite {
         } else {
             setTexture(atlas.findRegion(Constants.Player.ship));
         }
+        validatePosition();
+    }
+
+    public void validatePosition(){
+        if (getPosition()[1] >= Constants.World.height/2){
+            getPosition()[1] = (Constants.World.height/2)-1;
+        }else if (getPosition()[1] <= 32){
+            getPosition()[1] = 1;
+        }else if (getPosition()[0] >= Constants.World.width){
+            getPosition()[0] = Constants.World.width-1;
+        }else if (getPosition()[0] <= 0){
+            getPosition()[0] = 1;
+        }//TODO work on this
     }
 }
