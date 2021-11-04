@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.*;
 import com.badlogic.gdx.math.Rectangle;
+import ghozti.liminalworld.utils.Constants;
 
 public abstract class GameSprite {
 
@@ -114,6 +115,8 @@ public abstract class GameSprite {
     }
 
     public void drawHitBox(Batch batch){
-        batch.draw(debugTexture,getPosition()[0]-unScaledWidth,getPosition()[1]-unscaledHeight, getWidth(),getHeight());
+        if (Constants.Debug.debugMode) {
+            batch.draw(debugTexture, getPosition()[0] - unScaledWidth, getPosition()[1] - unscaledHeight, getWidth(), getHeight());
+        }
     }
 }

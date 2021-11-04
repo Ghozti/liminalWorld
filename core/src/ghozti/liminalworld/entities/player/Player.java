@@ -5,16 +5,17 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.math.Rectangle;
 import ghozti.liminalworld.entities.GameSprite;
 import ghozti.liminalworld.input.InputController;
+import ghozti.liminalworld.utils.Constants;
 
 public class Player extends GameSprite {
 
     public Player(){
-        createSprite(new Sprite(atlas.findRegion("ship")));//TODO make this a constant
+        createSprite(new Sprite(atlas.findRegion(Constants.Player.ship)));
         createHitbox(new Rectangle());
-        setPosition(new float[]{500,500});
-        setRegionWidth(64);//TODO make this a constant
-        setRegionHeight(64);//TODO make this a constant
-        setScale(3);//TODO make this a constant
+        setPosition(new float[]{Constants.Player.initX,Constants.Player.initY});
+        setRegionWidth(Constants.Player.regionWidth);
+        setRegionHeight(Constants.Player.regionHeight);
+        setScale(Constants.Player.scale);
     }
 
     @Override
@@ -27,18 +28,18 @@ public class Player extends GameSprite {
     public void update() {
         if (InputController.getKey().equals("a")){
             updatePosition(-8,0);
-            setTexture(atlas.findRegion("shipActive"));
+            setTexture(atlas.findRegion(Constants.Player.shipActive));
         }else if(InputController.getKey().equals("d")){
             updatePosition(8,0);
-            setTexture(atlas.findRegion("shipActive"));
+            setTexture(atlas.findRegion(Constants.Player.shipActive));
         }else if (InputController.getKey().equals("w")){
             updatePosition(0,8);
-            setTexture(atlas.findRegion("shipActive"));
+            setTexture(atlas.findRegion(Constants.Player.shipActive));
         }else if(InputController.getKey().equals("s")){
             updatePosition(0,-8);
-            setTexture(atlas.findRegion("shipActive"));
+            setTexture(atlas.findRegion(Constants.Player.shipActive));
         } else {
-            setTexture(atlas.findRegion("ship"));
+            setTexture(atlas.findRegion(Constants.Player.ship));
         }
     }
 }
