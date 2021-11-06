@@ -45,7 +45,6 @@ public class Player extends GameSprite {
     }
 
     public void validatePosition(){
-
         if (getPosition()[1] > 485){
             getPosition()[1] = 485;
         }else if (getPosition()[1] < 85){

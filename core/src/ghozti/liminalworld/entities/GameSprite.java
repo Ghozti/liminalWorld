@@ -71,6 +71,10 @@ public abstract class GameSprite {
         hitbox.y = position[1];
     }
 
+    public void teleport(float x, float y){
+        getSprite().setPosition(x,y);
+    }
+
     //GETTERS
     public void setTexture(TextureRegion texture){
         this.texture = texture;
