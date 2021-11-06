@@ -45,14 +45,15 @@ public class Player extends GameSprite {
     }
 
     public void validatePosition(){
-        if (getPosition()[1] >= Constants.World.height/2){
-            getPosition()[1] = (Constants.World.height/2)-1;
-        }else if (getPosition()[1] <= 32){
-            getPosition()[1] = 1;
-        }else if (getPosition()[0] >= Constants.World.width){
-            getPosition()[0] = Constants.World.width-1;
-        }else if (getPosition()[0] <= 0){
-            getPosition()[0] = 1;
-        }//TODO work on this
+
+        if (getPosition()[1] > 485){
+            getPosition()[1] = 485;
+        }else if (getPosition()[1] < 85){
+            getPosition()[1] = 85;
+        }else if (getPosition()[0] > 1785){
+            getPosition()[0] = 1785;
+        }else if (getPosition()[0] < 65) {
+            getPosition()[0] = 65;
+        }
     }
 }
