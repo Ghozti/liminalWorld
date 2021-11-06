@@ -116,7 +116,13 @@ public abstract class GameSprite {
 
     public void drawHitBox(Batch batch){
         if (Constants.Debug.debugMode) {
-            batch.draw(debugTexture, getPosition()[0] - unScaledWidth, getPosition()[1] - unscaledHeight, getWidth(), getHeight());
+            batch.draw(debugTexture, getPosition()[0], getPosition()[1], getWidth(), getHeight());
+        }
+    }
+
+    public void drawHitBox(Batch batch, boolean scaleDown){
+        if (Constants.Debug.debugMode) {
+            batch.draw(debugTexture, getPosition()[0] - width/scale, getPosition()[1] - height/scale, getWidth(), getHeight());
         }
     }
 }

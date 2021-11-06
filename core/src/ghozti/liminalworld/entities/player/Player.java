@@ -21,7 +21,7 @@ public class Player extends GameSprite {
     @Override
     public void draw(Batch batch) {
         drawSprite(batch);
-        drawHitBox(batch);
+        drawHitBox(batch,true);
     }
 
     @Override

@@ -24,4 +24,9 @@ public class Constants {
         public final static float initX = 500;
         public final static float initY = 500;
     }
+
+    public static class Comet {
+        //texture regions
+        public final static String cometTexture = "comet";
+    }
 }

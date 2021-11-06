@@ -41,7 +41,7 @@ public class GameLauncher implements Screen {
         region = atlas.findRegion("bg");
 
         player = new Player();
-        //comet = new Comet();
+        comet = new Comet();
     }
 
     @Override
@@ -51,7 +51,7 @@ public class GameLauncher implements Screen {
 
     public void update(){
         player.update();
-        //comet.update();
+        comet.update();
     }
 
     @Override
@@ -68,7 +68,7 @@ public class GameLauncher implements Screen {
         batch.draw(region,0,-bgOffset+1080,1920,1080);
 
         //comet
-        //comet.draw(batch);
+        comet.draw(batch);
         //player
         player.draw(batch);
         batch.end();
