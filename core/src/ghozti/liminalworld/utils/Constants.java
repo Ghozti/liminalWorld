@@ -28,5 +28,6 @@ public class Constants {
     public static class Comet {
         //texture regions
         public final static String cometTexture = "comet";
+        public final static int spawnAbleComets = 8;
     }
 }

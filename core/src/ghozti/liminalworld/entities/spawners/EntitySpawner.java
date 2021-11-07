@@ -7,11 +7,13 @@ import java.util.ArrayList;
 
 public abstract class EntitySpawner {
 
-    ArrayList<GameSprite> entityList;
+    ArrayList<GameSprite> spriteArrayList;
 
     public abstract void drawEntities(Batch batch);
 
     public abstract void entityOverlaps();
 
     public abstract void disposeEntities();
+
+    public abstract void update();
 }

@@ -9,7 +9,7 @@ import ghozti.liminalworld.utils.Constants;
 
 public class Comet extends GameSprite {
 
-    public Comet(){
+    public Comet(float initX, float initY, float scale){
         createSprite(new Sprite(atlas.findRegion(Constants.Comet.cometTexture)));
         createHitbox(new Rectangle());
         setPosition(new float[]{500,500});
@@ -23,8 +23,6 @@ public class Comet extends GameSprite {
         drawSprite(batch);
         drawHitBox(batch);
     }
-
-    int i = 0;
 
     @Override
     public void update() {
