@@ -42,8 +42,7 @@ public class CometSpawner extends EntitySpawner{
     public void update() {
         entityOverlaps();
         for(int i = 0; i < spriteArrayList.size(); i++){
-            spriteArrayList.get(i).updatePosition(0,-1);
-            //spriteArrayList.get(i).getSprite().rotate(-.3f);
+            spriteArrayList.get(i).update();
         }
     }
 }

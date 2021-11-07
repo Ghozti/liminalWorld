@@ -13,6 +13,7 @@ public abstract class GameSprite {
     com.badlogic.gdx.math.Rectangle hitbox;
     float[] position;
     float width, height, scale, unScaledWidth, unscaledHeight;
+    float hitBoxOffSetX = 0, hitBoxOffSetY = 0;
     TextureRegion texture;
 
     //const
@@ -68,9 +69,9 @@ public abstract class GameSprite {
         hitbox.height = height;
     }
 
-    public void setHitboxPosition(float x, float y){
-        hitbox.x = x;
-        hitbox.y = y;
+    public void setHitboxOffset(float x, float y){
+        hitBoxOffSetX = x;
+        hitBoxOffSetY = y;
     }
 
     public void updatePosition(float xChange, float ychange){
@@ -130,13 +131,13 @@ public abstract class GameSprite {
 
     public void drawHitBox(Batch batch){
         if (Constants.Debug.debugMode) {
-            batch.draw(debugTexture, hitbox.x, hitbox.y, hitbox.width, hitbox.height);
+            batch.draw(debugTexture, hitbox.x + hitBoxOffSetX, hitbox.y + hitBoxOffSetY, hitbox.width, hitbox.height);
         }
     }
 
     public void drawHitBox(Batch batch, boolean scaleDown){
         if (Constants.Debug.debugMode) {
-            batch.draw(debugTexture, hitbox.x - width/scale, hitbox.y - height/scale, hitbox.width, hitbox.height);
+            batch.draw(debugTexture, (hitbox.x + hitBoxOffSetX) - width/scale, (hitbox.y + hitBoxOffSetY) - height/scale, hitbox.width, hitbox.height);
         }
     }
 }

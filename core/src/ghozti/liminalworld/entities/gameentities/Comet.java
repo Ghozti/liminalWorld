@@ -11,6 +11,8 @@ public class Comet extends GameSprite {
 
     boolean destroyed, outOfBounds;
 
+    //TODO work on hitbox width/height/x/y scaling due to sprite scale, work on making comets spawn a certain distance from each other and work on a more efficient game sprite and comet spawner/ comet class
+
     public Comet(float initX, float initY, float scale){
         createSprite(new Sprite(atlas.findRegion(Constants.Comet.cometTexture)));
         createHitbox(new Rectangle());
@@ -18,8 +20,8 @@ public class Comet extends GameSprite {
         setRegionWidth(330);
         setRegionHeight(220);
         setScale(scale);
-        setHitboxDimensions(210,200);
-        setHitboxPosition(600,600);
+        setHitboxDimensions(210,150);
+        setHitboxOffset(43,30);
         destroyed = false;
         outOfBounds = false;
     }
@@ -33,5 +35,6 @@ public class Comet extends GameSprite {
     @Override
     public void update() {
         getSprite().rotate(-.5f);
+        updatePosition(0,-1);
     }
 }
