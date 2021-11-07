@@ -15,6 +15,7 @@ import com.badlogic.gdx.utils.viewport.StretchViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import ghozti.liminalworld.entities.gameentities.Comet;
 import ghozti.liminalworld.entities.player.Player;
+import ghozti.liminalworld.entities.spawners.CometSpawner;
 
 public class GameLauncher implements Screen {
 
@@ -28,6 +29,7 @@ public class GameLauncher implements Screen {
     TextureRegion region;
     int bgOffset;
     Player player;
+    CometSpawner spawner;
 
     public GameLauncher(){
         camera = new OrthographicCamera();
@@ -40,6 +42,7 @@ public class GameLauncher implements Screen {
         region = atlas.findRegion("bg");
 
         player = new Player();
+        spawner = new CometSpawner();
     }
 
     @Override
@@ -49,6 +52,7 @@ public class GameLauncher implements Screen {
 
     public void update(){
         player.update();
+        spawner.update();
     }
 
     @Override
@@ -66,6 +70,7 @@ public class GameLauncher implements Screen {
 
         //player
         player.draw(batch);
+        spawner.drawEntities(batch);
         batch.end();
     }
 

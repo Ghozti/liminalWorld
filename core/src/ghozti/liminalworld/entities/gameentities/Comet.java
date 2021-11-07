@@ -12,10 +12,10 @@ public class Comet extends GameSprite {
     public Comet(float initX, float initY, float scale){
         createSprite(new Sprite(atlas.findRegion(Constants.Comet.cometTexture)));
         createHitbox(new Rectangle());
-        setPosition(new float[]{500,500});
+        setPosition(new float[]{initX,initY});
         setRegionWidth(330);
         setRegionHeight(220);
-        setScale(1);
+        setScale(scale);
     }
 
     @Override
