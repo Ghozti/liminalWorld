@@ -9,6 +9,8 @@ import ghozti.liminalworld.utils.Constants;
 
 public class Comet extends GameSprite {
 
+    boolean destroyed, outOfBounds;
+
     public Comet(float initX, float initY, float scale){
         createSprite(new Sprite(atlas.findRegion(Constants.Comet.cometTexture)));
         createHitbox(new Rectangle());
@@ -16,6 +18,10 @@ public class Comet extends GameSprite {
         setRegionWidth(330);
         setRegionHeight(220);
         setScale(scale);
+        setHitboxDimensions(210,200);
+        setHitboxPosition(600,600);
+        destroyed = false;
+        outOfBounds = false;
     }
 
     @Override

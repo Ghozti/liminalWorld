@@ -63,6 +63,16 @@ public abstract class GameSprite {
         hitbox.height = height;
     }
 
+    public void setHitboxDimensions(float width, float height){
+        hitbox.width = width;
+        hitbox.height = height;
+    }
+
+    public void setHitboxPosition(float x, float y){
+        hitbox.x = x;
+        hitbox.y = y;
+    }
+
     public void updatePosition(float xChange, float ychange){
         position[0] += xChange;
         position[1] += ychange;
@@ -120,13 +130,13 @@ public abstract class GameSprite {
 
     public void drawHitBox(Batch batch){
         if (Constants.Debug.debugMode) {
-            batch.draw(debugTexture, getPosition()[0], getPosition()[1], getWidth(), getHeight());
+            batch.draw(debugTexture, hitbox.x, hitbox.y, hitbox.width, hitbox.height);
         }
     }
 
     public void drawHitBox(Batch batch, boolean scaleDown){
         if (Constants.Debug.debugMode) {
-            batch.draw(debugTexture, getPosition()[0] - width/scale, getPosition()[1] - height/scale, getWidth(), getHeight());
+            batch.draw(debugTexture, hitbox.x - width/scale, hitbox.y - height/scale, hitbox.width, hitbox.height);
         }
     }
 }

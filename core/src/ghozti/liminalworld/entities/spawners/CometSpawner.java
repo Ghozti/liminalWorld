@@ -6,14 +6,17 @@ import ghozti.liminalworld.entities.gameentities.Comet;
 import ghozti.liminalworld.utils.Constants;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class CometSpawner extends EntitySpawner{
 
+    int currentDrawn;
+
     public CometSpawner(){
         spriteArrayList = new ArrayList<>();
-
+        int lastx = 50;
         for (int i = 0; i < Constants.Comet.spawnAbleComets; i++){
-            spriteArrayList.add(new Comet(500,820,1));
+            spriteArrayList.add(new Comet((new Random().nextInt(1785 - 85) + 85) + lastx,1080,1));
         }
     }
 
@@ -38,5 +41,9 @@ public class CometSpawner extends EntitySpawner{
     @Override
     public void update() {
         entityOverlaps();
+        for(int i = 0; i < spriteArrayList.size(); i++){
+            spriteArrayList.get(i).updatePosition(0,-1);
+            //spriteArrayList.get(i).getSprite().rotate(-.3f);
+        }
     }
 }
